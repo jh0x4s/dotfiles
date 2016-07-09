@@ -1,25 +1,25 @@
 #!/bin/bash
 
 # variables
-__DOT_DIR=~/dotfiles
-__DOT_FILES=".vimrc .tmux.conf"
+DOT_DIR=~/dotfiles
+DOT_FILES=".vimrc .tmux.conf"
 
 # colorful output 
-__COLOR_INFO=`tput setaf 3`
-__COLOR_ERR=`tput setaf 1`
-__COLOR_RESET=`tput sgr0`
+COLOR_INFO=`tput setaf 3`
+COLOR_ERR=`tput setaf 1`
+COLOR_RESET=`tput sgr0`
 
 function info {
-    echo "${__COLOR_INFO}$@${__COLOR_RESET}"
+    echo "${COLOR_INFO}$@${COLOR_RESET}"
 }
 
 function err {
-    echo "${__COLOR_ERR}$@${__COLOR_RESET}"
+    echo "${COLOR_ERR}$@${COLOR_RESET}"
 }
 
 # install 
 function install {
-    for file in $__DOT_FILES; do
+    for file in $DOT_FILES; do
 	info "Creating symlink to $file in home directory."
 	ln -s $dir/$file ~/$file
     done
@@ -27,7 +27,7 @@ function install {
 
 # remove
 function remove {
-    for file in $__DOT_FILES; do
+    for file in $DOT_FILES; do
 	info "Deleteing ~/$file."
 	rm ~/$file
     done
