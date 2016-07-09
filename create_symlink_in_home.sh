@@ -21,7 +21,7 @@ function err {
 function install {
     for file in $DOT_FILES; do
 	info "Creating symlink to $file in home directory."
-	ln -s $dir/$file ~/$file
+	ln -s $DOT_DIR/$file ~/$file
     done
 }
 
