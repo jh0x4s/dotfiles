@@ -17,9 +17,25 @@ function err {
     echo "${__COLOR_ERR}$@${__COLOR_RESET}"
 }
 
-# body
-for file in $__DOT_FILES; do
-    echo "Creating symlink to $file in home directory."
-    ln -s $dir/$file ~/.$file
-done
+# install 
+function install {
+    for file in $__DOT_FILES; do
+	info "Creating symlink to $file in home directory."
+	ln -s $dir/$file ~/$file
+    done
+}
 
+# remove
+function remove {
+    for file in $__DOT_FILES; do
+	info "Deleteing ~/$file."
+	rm ~/$file
+    done
+}
+
+# main
+if [ "$1" = "--remove" ] || [ "$1" = "-r" ]; then
+    remove 
+else
+    install
+fi
