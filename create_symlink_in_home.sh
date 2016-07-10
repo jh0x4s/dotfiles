@@ -20,16 +20,16 @@ function err {
 # install 
 function install {
     for file in $DOT_FILES; do
-	info "Creating symlink to $file in home directory."
-	ln -s $DOT_DIR/$file ~/$file
+        info "Creating symlink to $file in home directory."
+        ln -s $DOT_DIR/$file ~/$file
     done
 }
 
 # remove
 function remove {
     for file in $DOT_FILES; do
-	info "Deleteing ~/$file."
-	rm ~/$file
+        info "Deleteing ~/$file."
+        rm ~/$file
     done
 }
 

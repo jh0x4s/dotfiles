@@ -1,5 +1,5 @@
-set nocompatible              " be iMproved, required
-filetype off                  " required
+set nocompatible                                        " be iMproved, required
+filetype off                                            " required
 
 " set the runtime path to include Vundle and initialize
 set rtp+=~/.vim/bundle/Vundle.vim
@@ -25,8 +25,8 @@ Plugin 'Raimondi/delimitMate'
 " Plugin 'hongqn/vim-osx-ime'
 
 " All of your Plugins must be added before the following line
-call vundle#end()            " required
-filetype plugin indent on    " required
+call vundle#end()                                       " required
+filetype plugin indent on                               " required
 
 " Brief help
 " :PluginList       - lists configured plugins
@@ -37,37 +37,37 @@ filetype plugin indent on    " required
 " see :h vundle for more details or wiki for FAQ
 " Put your non-Plugin stuff after this line
 
-set background=dark 			" 하이라이팅 lihgt / dark
-set nocompatible			" 오리지날 VI와 호환하지 않음
-set splitright				" 창 분할시 우측에 새창 배치
-set splitbelow				" 창 분할시 하단에 새창 배치
-set nobackup 				" 백업 파일을 안만듬
-set visualbell 				" 키를 잘못눌렀을 때 화면 프레시
-set ruler 				" 화면 우측 하단에 현재 커서의 위치(줄,칸) 표시
-set number 				" 행번호 표시, set nu 도 가능
-set fencs=ucs-bom,utf-8,euc-kr.latin1 	" 한글 파일은 euc-kr로, 유니코드는 유니코드로
-set fileencoding=utf-8 			" 파일저장인코딩 
-set tenc=utf-8      			" 터미널 인코딩
-" set expandtab       			" softtab 사용 
-set shiftwidth=4    			" >>, << 등을 사용했을때 들여쓰기 간격
-set softtabstop=4   			" tab키를 사용했을때 들여쓰기 간격
-set autoindent      			" 이전 줄의 들여쓰기 간격을 새줄에서 유지
-set smartindent     			" automatically inserts indentation in some cases
-set cindent         			" like smartindent, but stricter and more customisable
-set autoread 				" 파일이 변경되었다면 자동으로 다시 읽음
-set hlsearch 				" 검색어 강조, set hls 도 가능
-set ignorecase 				" 검색시 대소문자 무시, set ic 도 가능
-set smartcase				" 검색어에 대문자 포함시 case sensitive 검색
-set incsearch 				" 키워드 입력시 점진적 검색
-set cursorline				" 커서가 있는 줄 강조
-set laststatus=2			" 상태줄이 항상 나옴 
-set title				" 편집하는 파일명을 창의 제목으로 사용
-set backspace=eol,start,indent		" 줄의 끝, 시작, 들여쓰기에서 백스페이스시 이전줄로
-set history=1000 			" vi 편집기록 기억갯수 .viminfo에 기록
+set background=dark                                     " 하이라이팅 lihgt / dark
+set nocompatible                                        " 오리지날 VI와 호환하지 않음
+set splitright                                          " 창 분할시 우측에 새창 배치
+set splitbelow                                          " 창 분할시 하단에 새창 배치
+set nobackup                                            " 백업 파일을 안만듬
+set visualbell                                          " 키를 잘못눌렀을 때 화면 프레시
+set ruler                                               " 화면 우측 하단에 현재 커서의 위치(줄,칸) 표시
+set number                                              " 행번호 표시, set nu 도 가능
+set fencs=ucs-bom,utf-8,euc-kr.latin1                   " 한글 파일은 euc-kr로, 유니코드는 유니코드로
+set fileencoding=utf-8                                  " 파일저장인코딩 
+set tenc=utf-8                                          " 터미널 인코딩
+set expandtab                                           " softtab 사용 
+set shiftwidth=4                                        " >>, << 등을 사용했을때 들여쓰기 간격
+set softtabstop=4                                       " tab키를 사용했을때 들여쓰기 간격
+set autoindent                                          " 이전 줄의 들여쓰기 간격을 새줄에서 유지
+set smartindent                                         " automatically inserts indentation in some cases
+set cindent                                             " like smartindent, but stricter and more customisable
+set autoread                                            " 파일이 변경되었다면 자동으로 다시 읽음
+set hlsearch                                            " 검색어 강조, set hls 도 가능
+set ignorecase                                          " 검색시 대소문자 무시, set ic 도 가능
+set smartcase                                           " 검색어에 대문자 포함시 case sensitive 검색
+set incsearch                                           " 키워드 입력시 점진적 검색
+set cursorline                                          " 커서가 있는 줄 강조
+set laststatus=2                                        " 상태줄이 항상 나옴 
+set title                                               " 편집하는 파일명을 창의 제목으로 사용
+set backspace=eol,start,indent                          " 줄의 끝, 시작, 들여쓰기에서 백스페이스시 이전줄로
+set history=1000                                        " vi 편집기록 기억갯수 .viminfo에 기록
 
-syntax on 				" 구문강조 사용
-filetype indent on 			" 파일 종류에 따른 구문강조
-colorscheme jellybeans			" vi 색상 테마 설정
+syntax on                                               " 구문강조 사용
+filetype indent on                                      " 파일 종류에 따른 구문강조
+colorscheme jellybeans                                  " vi 색상 테마 설정
 
 " macvim에서 insert mode를 나올때 영문상태로 전환함
 set noimd
@@ -78,13 +78,13 @@ set ims=-1
 map <leader>ev :e! ~/.vimrc<cr>
 
 " Function keys
-nnoremap <F2> :NERDTreeToggle<CR>		" NERDTree 보이기/감추기
-" nnoremap <F7> :SyntasticCheck<CR>		" 문법(Syntastic) 체크
-" nnoremap <F11> :tabprev<CR>			" 이전 탭으로 이동
-" nnoremap <F12> :tabnext<CR>			" 다음 탭으로 이동
-" nnoremap <F10> :bd<CR>			" 버퍼 삭제
-nnoremap <F11> :bN<CR>				" 이전 버퍼를 현재 윈도우에 표시
-nnoremap <F12> :bn<CR>				" 다음 버퍼를 현재 윈도우에 표시
+nnoremap <F2> :NERDTreeToggle<CR>                       " NERDTree 보이기/감추기
+" nnoremap <F7> :SyntasticCheck<CR>                     " 문법(Syntastic) 체크
+" nnoremap <F11> :tabprev<CR>                           " 이전 탭으로 이동
+" nnoremap <F12> :tabnext<CR>                           " 다음 탭으로 이동
+" nnoremap <F10> :bd<CR>                                " 버퍼 삭제
+nnoremap <F11> :bN<CR>                                  " 이전 버퍼를 현재 윈도우에 표시
+nnoremap <F12> :bn<CR>                                  " 다음 버퍼를 현재 윈도우에 표시
 
 " Delete buffer
 map <leader>d :bd<CR>
@@ -133,23 +133,23 @@ nmap g* g*zz
 nmap g# g#zz
 
 " Plugin vim-airline
-let g:airline#extensions#tabline#enabled = 1		" 탭 사용시 상단에 탭목록 표시
-let g:airline#extensions#tabline#tab_nr_type = 1	" 탭 번호를 표시
-let g:airline#extensions#tabline#fnamemod = ':t'	" 탭 제목에 파일이름만 표시
+let g:airline#extensions#tabline#enabled = 1            " 탭 사용시 상단에 탭목록 표시
+let g:airline#extensions#tabline#tab_nr_type = 1        " 탭 번호를 표시
+let g:airline#extensions#tabline#fnamemod = ':t'        " 탭 제목에 파일이름만 표시
 
 " Plugin delimitMate
-let delimitMate_excluded_ft = "vim"			" .vimrc 편집시 주석쓰기 불편해서 delimimate 사용안함
+let delimitMate_excluded_ft = "vim"                     " .vimrc 편집시 주석쓰기 불편해서 delimimate 사용안함
 
 " Plugin Numbers
-map <leader>ln :NumbersToggle<CR>			" 행번호를 절대/상대 번호로 표시
+map <leader>ln :NumbersToggle<CR>                       " 행번호를 절대/상대 번호로 표시
 
 " Plugin ctrl-p
 let g:ctrlp_working_path_mode = 'ra'
 " let g:ctrlp_dotfiles=1
 let g:ctrlp_custom_ignore = {
-	\ 'dir': '\.git$\|node_modules$\|\.hg$\|\.svn$',
-	\ 'file': '\.exe$\|\.so$|\.png$'
-	\ }
+        \ 'dir': '\.git$\|node_modules$\|\.hg$\|\.svn$',
+        \ 'file': '\.exe$\|\.so$|\.png$'
+        \ }
 map <leader>o :CtrlPBuffer<cr>
  
 " Plugin NERDTree
