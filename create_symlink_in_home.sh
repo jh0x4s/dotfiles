@@ -1,8 +1,8 @@
 #!/bin/bash
 
 # variables
-DOT_DIR=~/dotfiles
-DOT_FILES=".vimrc .tmux.conf"
+DOT_BASE_DIR=~/dotfiles
+DOT_FILES="vimrc tmux.conf"
 
 # colorful output 
 COLOR_INFO=`tput setaf 3`
@@ -21,7 +21,7 @@ function err {
 function install {
     for file in $DOT_FILES; do
         info "Creating symlink to $file in home directory."
-        ln -s $DOT_DIR/$file ~/$file
+        ln -s $DOT_BASE_DIR/dotfiles/$file ~/.$file
     done
 }
 
