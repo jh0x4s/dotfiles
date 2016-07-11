@@ -1,0 +1,6 @@
+[submodule "lib/Vundle.vim"]
+	path = lib/Vundle.vim
+	url = https://github.com/gmarik/Vundle.vim
+[submodule "lib/jellybeans.vim"]
+	path = lib/jellybeans.vim
+	url = https://github.com/nanotech/jellybeans.vim
