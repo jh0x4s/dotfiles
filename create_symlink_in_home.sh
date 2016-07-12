@@ -28,6 +28,8 @@ function install {
         ln -snf $DOT_BASE_DIR/dotfiles/$file ~/.$file
     done
 
+    ln -snf $DOT_BIN_DIR/tm.sh /usr/local/bin/tm
+
     # git submodule Vundle.vim, jellybeans.vim.
     git submodule init
     git submodule update
@@ -47,6 +49,9 @@ function remove {
         info "Deleteing ~/.$file"
         rm ~/.$file
     done
+
+    info "Deleteing /usr/local/bin/tm"
+    rm /usr/local/bin/tm
 
     info "Deleteing ~/.vim"
     rm ~/.vim
