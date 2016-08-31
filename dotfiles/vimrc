@@ -12,24 +12,23 @@ Plugin 'vim-airline'                    " 화면 상하단에 상태바(버퍼, 
 Plugin 'myusuf3/numbers.vim'            " set nu 화면을 상대번호로 변경 (d,y,j와 같은 명령에필요한 상대번호 확인에 유용)
 Plugin 'kshenoy/vim-signature'          " 북마크 확장 - 자동 알파벳팅, 순회, 등?
 Plugin 'scrooloose/nerdtree'            " 파일탐색기 (윈도우탐색기와 같은 화면과 북마크, 탭열기, 루트 디렉토리 변경하기 등의 기능) 
-Plugin 'ctrlpvim/ctrlp.vim'             " 파일탐색기 (일부의 문자만 입력하더라도 파일을 찾아주는 Full path fuzzy 검색 용도) 
+Plugin 'ctrlpvim/ctrlp.vim'             " 파일, 버퍼 탐색기 (일부의 문자만 입력하더라도 파일을 찾아주는 Full path fuzzy 검색 용도) 
 Plugin 'mileszs/ack.vim'                " the_silver_search를 이용하여 (ack, grep 처럼) 파일내용 검색
 Plugin 'wellle/targets.vim'             " 다양한 text object 지정 방법
-Plugin 'tpope/vim-fugitive'             " git 플러그인
+Plugin 'airblade/vim-gitgutter'         " git으로 관리되는 파일의 변동상태를 줄번호 화면 옆에 표시 
 Plugin 'nfvs/vim-perforce'              " 파일을 수정하거나 저장하면 자동으로 Perforce에 check out됨
 Plugin 'tomtom/tcomment_vim'            " 주석(comment) 기능으로 사용하며, 파일타입에 따라 알맞은 주석방식을 자동으로 지원함 
 Plugin 'tpope/vim-surround'             " '', {}, [], <p></p>와 같은 구문들을 편리하게 입력, 수정 할 수 있음
 
-Plugin 'airblade/vim-gitgutter'
 Plugin 'Valloric/YouCompleteMe'
 Plugin 'leafgarland/typescript-vim'
+" Plugin 'tpope/vim-fugitive'             " git 플러그인
 " Plugin 'jelera/vim-javascript-syntax'
 " Plugin 'marijnh/tern_for_vim'
 " Plugin 'hongqn/vim-osx-ime'
 " tpope/vim-commentary
 " easymotion/vim-easymotion
 " christoomey/vim-tmux-navigator
-"
 
 " All of your Plugins must be added before the following line
 call vundle#end()                               " required
@@ -82,20 +81,20 @@ set noimd
 set imi=1
 set ims=-1
 
-" edit ~/.vimrc
-map <leader>ev :e! ~/.vimrc<cr>
-
 " Function keys
 nnoremap <F2> :NERDTreeToggle<CR>               " NERDTree 보이기/감추기
 nnoremap <F7> :SyntasticCheck<CR>               " 문법(Syntastic) 체크
-nnoremap <F9> :e!<CR>                           " 저장안된 파일의 수정내용을 취소
 nnoremap <F10> :bd<CR>                          " 버퍼 삭제
 nnoremap <F11> :bN<CR>                          " 이전 버퍼를 현재 윈도우에 표시
 nnoremap <F12> :bn<CR>                          " 다음 버퍼를 현재 윈도우에 표시
 
-" nnoremap <silent> q :bd<Enter>
+" Edit ~/.vimrc
+map <leader>ev :e! ~/.vimrc<cr>
 
-" Go to previous  window
+" Revert changes to modified a single file
+nnoremap <leader>u :e!<CR>                      " 저장안된 파일의 수정내용을 취소
+
+" Go to previous window
 nnoremap <silent> <tab> <c-w><c-p>
 
 " Go to previous tab 
@@ -130,7 +129,7 @@ map <silent> <leader>= <c-w>=                   " 동일한 크기로 자동변�
 " nmap \t :set ts=4 sts=4 sw=4 noet<cr>
 " nmap \s :set ts=4 sts=4 sw=4 et<cr>
 
-" make search appears in the middle of the screen
+" Make search appears in the middle of the screen
 nmap n nzz
 nmap N Nzz
 nmap * *zz
@@ -144,18 +143,15 @@ inoremap <C-j> <Down>
 inoremap <C-l> <Right>
 inoremap <C-h> <Left>
 
-" > Plugin vim-airline
+" vim-airline 설정
 let g:airline#extensions#tabline#enabled=1      " 탭 사용시 상단에 탭목록 표시
 let g:airline#extensions#tabline#tab_nr_type=1  " 탭 번호를 표시
 let g:airline#extensions#tabline#fnamemod=':t'  " 탭 제목에 파일이름만 표시
 
-" > Plugin delimitMate
-let delimitMate_excluded_ft="vim"               " .vimrc 편집시 주석쓰기 불편해서 delimimate 사용안함
+" numbers 설정
+map <leader>rn :NumbersToggle<CR>               " 행번호를 절대/상대 번호로 표시
 
-" > Plugin Numbers
-map <leader>ln :NumbersToggle<CR>               " 행번호를 절대/상대 번호로 표시
-
-" > Plugin ctrl-p
+" ctrl-p 설정
 let g:ctrlp_map = '<c-p>'
 let g:ctrlp_cmd = 'CtrlPMixed'
 let g:ctrlp_working_path_mode = 'ra'
@@ -166,16 +162,16 @@ let g:ctrlp_custom_ignore = {
         \ }
 let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files -co --exclude-standard']
  
-" > Plugin NERDTree
+" NERDTree 설정
 " let NERDTreeShowHidden=1
 " let NERDTreeQuitOnOpen=1
 
-" > Plugin TComment
+" tcomment 설정
 nmap <leader>c :TComment<cr>
 vmap <leader>c :TComment<cr>
 
-" > Plugin Syntastic
-" Syntastic은 vim의 syntax on 감지결과로 파일타입을 인식한다. (see: h filetype)
+" syntastic 설정
+" syntastic은 vim의 syntax on 감지결과로 파일타입을 인식한다. (see: h filetype)
 " 그런데 typescript 파일을 인식하지 못해서, :SyntasticInfo 해보면 xmllint가
 " 적용되어 있는 것을 볼 수 있는데, 이때문에 *.ts에 대해서 강제로 filetype을 
 " 지정해주는 처리가 필요하다.
@@ -195,25 +191,32 @@ let g:syntastic_typescript_checkers=['tsc']
 let g:syntastic_mode_map = { 
     \ 'mode': 'passive',
     \ 'active_filetypes': ['javascript'],
-    \ 'passive_filetypes': [] 
+    \ 'passive_filetypes': [ ] 
     \ }
 
-" > Plugin YouCompleteMe
+" YouCompleteMe 설정
 " let g:ycm_key_list_select_completion=['<C-j>', '<Down>']
 " let g:ycm_key_list_previous_completion=['<C-k>', '<Up>']
 let g:ycm_autoclose_preview_window_after_completion=1
 
-" > Plugin Ack
+" ack 설정
 " silver searcher가 설치되어있다면 사용한다
 if executable('ag')                 
     let g:ackprg = 'ag --vimgrep'   
 endif
 
 " 명령어모드에서 ack로 입력하면 Ack!로 치환
-cnoreabbrev ack Ack!                
+cnoreabbrev ack Ack!
 nnoremap <Leader>a :Ack!<Space>
 
-" > Plugin VIM-signature
+" o to preview file, open but maintain focus on ack.vim results
+" O to open and close the quickfix window
+let g:ack_mappings = { 
+    \ "o": "<CR><C-W>j",            
+    \ "O": "<CR><C-W><C-W>:ccl<CR>" 
+    \ }
+
+" vim-signature 설정
 map <leader>p m. 
 map <leader>[ '[
 map <leader>] ']
