@@ -10,13 +10,13 @@ Plugin 'VundleVim/Vundle.vim'
 
 Plugin 'vim-airline'                    " 화면 상하단에 상태바(버퍼, 탭, 입력상태) 표시 (커스터마이징 가능)
 Plugin 'myusuf3/numbers.vim'            " set nu 화면을 상대번호로 변경 (d,y,j와 같은 명령에필요한 상대번호 확인에 유용)
-Plugin 'kshenoy/vim-signature'          " 북마크 확장 - 자동 알파벳팅, 순회, 등?
 Plugin 'scrooloose/nerdtree'            " 파일탐색기 (윈도우탐색기와 같은 화면과 북마크, 탭열기, 루트 디렉토리 변경하기 등의 기능) 
 Plugin 'ctrlpvim/ctrlp.vim'             " 파일, 버퍼 탐색기 (일부의 문자만 입력하더라도 파일을 찾아주는 Full path fuzzy 검색 용도) 
+Plugin 'kshenoy/vim-signature'          " 북마크 확장 - 자동 알파벳팅, 순회, 등?
 Plugin 'mileszs/ack.vim'                " the_silver_search를 이용하여 (ack, grep 처럼) 파일내용 검색
-Plugin 'wellle/targets.vim'             " 다양한 text object 지정 방법
 Plugin 'airblade/vim-gitgutter'         " git으로 관리되는 파일의 변동상태를 줄번호 화면 옆에 표시 
 Plugin 'nfvs/vim-perforce'              " 파일을 수정하거나 저장하면 자동으로 Perforce에 check out됨
+Plugin 'wellle/targets.vim'             " 다양한 text object 지정 방법
 Plugin 'tomtom/tcomment_vim'            " 주석(comment) 기능으로 사용하며, 파일타입에 따라 알맞은 주석방식을 자동으로 지원함 
 Plugin 'tpope/vim-surround'             " '', {}, [], <p></p>와 같은 구문들을 편리하게 입력, 수정 할 수 있음
 
@@ -91,8 +91,10 @@ nnoremap <F12> :bn<CR>                          " 다음 버퍼를 현재 윈도
 " Edit ~/.vimrc
 map <leader>ev :e! ~/.vimrc<cr>
 
-" Revert changes to modified a single file
-nnoremap <leader>u :e!<CR>                      " 저장안된 파일의 수정내용을 취소
+" 종료시 열려있던 파일들을 시작시 복원함 
+autocmd VimLeave * mksession! ~/.vim/shutdown_session.vim
+autocmd VimEnter source ~/.vim/shutdown_session.vim<CR>
+set viminfo+=%
 
 " Go to previous window
 nnoremap <silent> <tab> <c-w><c-p>
@@ -119,9 +121,9 @@ noremap <leader>9 9gt
 noremap <leader>0 :tablast<cr>
 
 " Resize current window 
-map <silent> <leader>W :vertical resize +5<cr>  " 가로(width) 확장
+map <silent> <leader>W :vertical resize +5<cr>  " 가로(Width) 확장
 map <silent> <leader>w :vertical resize -5<cr>  " 가로 축소
-map <silent> <leader>H :resize +5<cr>           " 세로(hight) 확장
+map <silent> <leader>H :resize +5<cr>           " 세로(Hight) 확장
 map <silent> <leader>h :resize -5<cr>           " 세로 축소
 map <silent> <leader>= <c-w>=                   " 동일한 크기로 자동변경
 
@@ -142,6 +144,10 @@ inoremap <C-k> <Up>
 inoremap <C-j> <Down>
 inoremap <C-l> <Right>
 inoremap <C-h> <Left>
+
+" 줄의 처음(0)과 마지막(9)으로 커서를 이동
+map <silent> 0 ^
+map <silent> 9 $
 
 " vim-airline 설정
 let g:airline#extensions#tabline#enabled=1      " 탭 사용시 상단에 탭목록 표시
