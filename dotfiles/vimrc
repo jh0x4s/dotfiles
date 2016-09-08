@@ -9,7 +9,7 @@ call vundle#begin()
 Plugin 'VundleVim/Vundle.vim'
 
 Plugin 'vim-airline'                    " 화면 상하단에 상태바(버퍼, 탭, 입력상태) 표시 (커스터마이징 가능)
-Plugin 'myusuf3/numbers.vim'            " set nu 화면을 상대번호로 변경 (d,y,j와 같은 명령에필요한 상대번호 확인에 유용)
+Plugin 'jh0x4s/vim-numbers'             " 라인 번호를 상대, 절대, 표시안함 순서로 변경함 
 Plugin 'scrooloose/nerdtree'            " 파일탐색기 (윈도우탐색기와 같은 화면과 북마크, 탭열기, 루트 디렉토리 변경하기 등의 기능) 
 Plugin 'ctrlpvim/ctrlp.vim'             " 파일, 버퍼 탐색기 (일부의 문자만 입력하더라도 파일을 찾아주는 Full path fuzzy 검색 용도) 
 Plugin 'kshenoy/vim-signature'          " 북마크 확장 - 자동 알파벳팅, 순회, 등?
@@ -50,7 +50,8 @@ set splitbelow                                  " 창 분할시 하단에 새창
 set nobackup                                    " 백업 파일을 안만듬
 set visualbell                                  " 키를 잘못눌렀을 때 화면 프레시
 set ruler                                       " 화면 우측 하단에 현재 커서의 위치(줄,칸) 표시
-set number                                      " 행번호 표시, set nu 도 가능
+set number                                      " 행번호 표시(nu)
+set relativenumber                              " 행번호를 상대번호로 표시(rnu)
 set fencs=ucs-bom,utf-8,euc-kr.latin1           " 한글 파일은 euc-kr로, 유니코드는 유니코드로
 set fileencoding=utf-8                          " 파일저장인코딩 
 set tenc=utf-8                                  " 터미널 인코딩
@@ -81,13 +82,6 @@ set noimd
 set imi=1
 set ims=-1
 
-" Function keys
-nnoremap <F2> :NERDTreeToggle<CR>               " NERDTree 보이기/감추기
-nnoremap <F7> :SyntasticCheck<CR>               " 문법(Syntastic) 체크
-nnoremap <F10> :bd<CR>                          " 버퍼 삭제
-nnoremap <F11> :bN<CR>                          " 이전 버퍼를 현재 윈도우에 표시
-nnoremap <F12> :bn<CR>                          " 다음 버퍼를 현재 윈도우에 표시
-
 " Edit ~/.vimrc
 map <leader>ev :e! ~/.vimrc<cr>
 
@@ -103,6 +97,14 @@ nnoremap <silent> <tab> <c-w><c-p>
 au TabLeave * let g:previoustab = tabpagenr()
 nnoremap <silent> <s-tab> :exe "tabn ".g:previoustab<cr>
 vnoremap <silent> <s-tab> :exe "tabn ".g:previoustab<cr>
+
+" Function keys
+nnoremap <F2> :NERDTreeToggle<CR>               " NERDTree 보이기/감추기
+nnoremap <F4> :NumbersCirculator<CR>            " 라인 번호를 상대, 절대, 표시안함 순서로 변경함 
+nnoremap <F7> :SyntasticCheck<CR>               " 문법(Syntastic) 체크
+nnoremap <F10> :bd<CR>                          " 버퍼 삭제
+nnoremap <F11> :bN<CR>                          " 이전 버퍼를 현재 윈도우에 표시
+nnoremap <F12> :bn<CR>                          " 다음 버퍼를 현재 윈도우에 표시
 
 " Open a new tab (T for with NERDTree)
 map <leader>T :tabnew .<CR>
@@ -153,9 +155,6 @@ map <silent> 9 $
 let g:airline#extensions#tabline#enabled=1      " 탭 사용시 상단에 탭목록 표시
 let g:airline#extensions#tabline#tab_nr_type=1  " 탭 번호를 표시
 let g:airline#extensions#tabline#fnamemod=':t'  " 탭 제목에 파일이름만 표시
-
-" numbers 설정
-map <leader>rn :NumbersToggle<CR>               " 행번호를 절대/상대 번호로 표시
 
 " ctrl-p 설정
 let g:ctrlp_map = '<c-p>'
