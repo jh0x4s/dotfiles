@@ -104,7 +104,7 @@ nnoremap <s-tab> :exe "tabn ".g:previoustab<cr>
 vnoremap <s-tab> :exe "tabn ".g:previoustab<cr>
 
 " Function keys
-nnoremap <f2> :NERDTreeToggle<cr>               " NERDTree 보이기/감추기
+nnoremap <f2> :call NERDTreeFindToggle()<cr>    " NERDTree 보이기/감추기
 nnoremap <f3> :GitGutterSignsToggle<cr>         " vim-gitgutter (git 변경 상태) 보이기/감추기
 nnoremap <f4> :NumbersCirculator<cr>            " vim-numbers로 라인번호 상태 변경 (상대, 절대, 표시안함 순)
 nnoremap <f7> :SyntasticCheck<cr>               " 문법(Syntastic) 체크
@@ -175,8 +175,19 @@ let g:ctrlp_custom_ignore = {
 " let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files -co --exclude-standard']
  
 " NERDTree 설정
-" let NERDTreeShowHidden=1
-" let NERDTreeQuitOnOpen=1
+function! IsNERDTreeOpen()
+  return exists("t:NERDTreeBufName") && (bufwinnr(t:NERDTreeBufName) != -1)
+endfunction
+
+function! NERDTreeFindToggle()
+  if IsNERDTreeOpen()
+    exec ':NERDTreeToggle'
+  else
+    exec ':NERDTreeFind'
+   endif
+endfunction
+
+let NERDTreeShowHidden=1
 
 " tcomment 설정
 nmap <leader>c gcc      " 현재 줄을 주석상태를 반전
