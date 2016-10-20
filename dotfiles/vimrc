@@ -23,8 +23,8 @@ Plugin 'easymotion/vim-easymotion'
 Plugin 'terryma/vim-multiple-cursors'
 Plugin 'leafgarland/typescript-vim'
 
-" Plugin 'tpope/vim-fugitive'             " git 플러그인
 Plugin 'Valloric/YouCompleteMe'
+Plugin 'tpope/vim-fugitive'             " git 플러그인
 " Plugin 'jelera/vim-javascript-syntax'
 " Plugin 'marijnh/tern_for_vim'
 " Plugin 'hongqn/vim-osx-ime'
@@ -166,6 +166,12 @@ command! SoftTab8 set sts=8 sw=8 et
 let g:airline#extensions#tabline#enabled=1      " 탭 사용시 상단에 탭목록 표시
 let g:airline#extensions#tabline#tab_nr_type=1  " 탭 번호를 표시
 let g:airline#extensions#tabline#fnamemod=':t'  " 탭 제목에 파일이름만 표시
+let g:airline#extensions#branch#enabled = 1
+
+if !exists('g:airline_symbols')
+  let g:airline_symbols = {}
+endif
+let g:airline_symbols.branch = '⎇'
 
 " ctrl-p 설정
 let g:ctrlp_map = '<c-p>'
