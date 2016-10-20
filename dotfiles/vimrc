@@ -23,8 +23,8 @@ Plugin 'easymotion/vim-easymotion'
 Plugin 'terryma/vim-multiple-cursors'
 Plugin 'leafgarland/typescript-vim'
 
-" Plugin 'Valloric/YouCompleteMe'
 " Plugin 'tpope/vim-fugitive'             " git 플러그인
+Plugin 'Valloric/YouCompleteMe'
 " Plugin 'jelera/vim-javascript-syntax'
 " Plugin 'marijnh/tern_for_vim'
 " Plugin 'hongqn/vim-osx-ime'
@@ -43,6 +43,11 @@ filetype plugin indent on                       " required
 " see :h vundle for more details or wiki for FAQ
 " Put your non-Plugin stuff after this line
 
+"
+filetype plugin on
+au BufRead,BufNewFile *.ts setlocal filetype=typescript
+
+"
 set background=dark                             " 하이라이팅 lihgt / dark
 set nocompatible                                " 오리지날 VI와 호환하지 않음
 set splitright                                  " 창 분할시 우측에 새창 배치
@@ -224,6 +229,14 @@ let g:syntastic_mode_map = {
 " let g:ycm_key_list_select_completion=['<c-j>', '<down>']
 " let g:ycm_key_list_previous_completion=['<c-k>', '<up>']
 let g:ycm_autoclose_preview_window_after_completion=1
+if !exists("g:ycm_semantic_triggers")
+  let g:ycm_semantic_triggers = {}
+endif
+let g:ycm_semantic_triggers['typescript'] = ['.']
+set completeopt-=preview
+
+nnoremap <leader>d :YcmCompleter GoToDefinition<CR>
+nnoremap <leader>r ::YcmCompleter GoToReferences<CR>
 
 " ack 설정
 " silver searcher가 설치되어있다면 사용한다
