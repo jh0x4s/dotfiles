@@ -84,8 +84,9 @@ filetype indent on                              " 파일 종류에 따른 구문
 colorscheme jellybeans                          " vi 색상 테마 설정
 
 " .vimrc 수정이 편리하게 단축키를 할당하고, 저장하면 재시작 필요없이 바로 적용되도록 한다
+" 파일 수정시에는 Git branch 이름이 표시되도록 절대경로 접근함
 autocmd! BufWritePost .vimrc,vimrc nested source $MYVIMRC
-map <leader>ev :e! ~/.vimrc<cr>
+map <leader>ev :exe "e! ".resolve(expand($MYVIMRC))<cr>
 
 " 종료시 열려있던 파일들을 시작시 복원함 
 autocmd VimLeave * mksession! ~/.vim/shutdown_session.vim
