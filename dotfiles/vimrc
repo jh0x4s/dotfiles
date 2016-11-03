@@ -22,6 +22,7 @@ Plugin 'tpope/vim-surround'             " '', {}, [], <p></p>와 같은 구문�
 Plugin 'easymotion/vim-easymotion'
 Plugin 'terryma/vim-multiple-cursors'
 Plugin 'leafgarland/typescript-vim'
+Plugin 'scrooloose/syntastic'
 
 Plugin 'Valloric/YouCompleteMe'
 Plugin 'tpope/vim-fugitive'             " git 플러그인
@@ -215,20 +216,21 @@ nmap <Leader>f <Plug>(easymotion-overwin-f)
 " 지정해주는 처리가 필요하다.
 autocmd BufNewFile,BufRead *.ts setlocal filetype=typescript
 
-" set statusline+=%#warningmsg#
-" set statusline+=%{SyntasticStatuslineFlag()}
-" set statusline+=%*
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
 
 let g:syntastic_always_populate_loc_list=1
 let g:syntastic_auto_loc_list=1
-let g:syntastic_check_on_open=1
 let g:syntastic_check_on_wq=0
 let g:syntastic_javascript_checkers=['jshint']
 let g:syntastic_typescript_checkers=['tsc']
+let g:syntastic_python_checkers = ['flake8', 'pylint']
+let g:syntastic_aggregate_errors = 1
 
 let g:syntastic_mode_map = { 
     \ 'mode': 'passive',
-    \ 'active_filetypes': ['javascript'],
+    \ 'active_filetypes': ['javascript', 'python'],
     \ 'passive_filetypes': [ ] 
     \ }
 
