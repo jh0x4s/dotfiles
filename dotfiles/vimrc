@@ -62,8 +62,8 @@ set fencs=ucs-bom,utf-8,euc-kr.latin1           " 한글 파일은 euc-kr로, �
 set fileencoding=utf-8                          " 파일저장인코딩 
 set tenc=utf-8                                  " 터미널 인코딩
 set expandtab                                   " softtab 사용(et) (탭 사용: noet|noexpandtab)   
-set shiftwidth=2                                " 들여쓰기(>>, <<) 간격(sw)
-set softtabstop=2                               " tab키를 사용했을때 들여쓰기간격(sts)
+set shiftwidth=4                                " 들여쓰기(>>, <<) 간격(sw)
+set softtabstop=4                               " tab키를 사용했을때 들여쓰기간격(sts)
 set autoindent                                  " 이전 줄의 들여쓰기 간격을 새줄에서 유지
 set smartindent                                 " automatically inserts indentation in some cases
 set cindent                                     " like smartindent, but stricter and more customisable
