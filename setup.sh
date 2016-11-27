@@ -5,7 +5,7 @@ DOT_BASE_DIR=~/dotfiles
 DOT_LIB_DIR=$DOT_BASE_DIR/lib
 DOT_VAR_DIR=$DOT_BASE_DIR/var
 DOT_BIN_DIR=$DOT_BASE_DIR/bin
-DOT_FILES="vimrc tmux.conf"
+DOT_FILES="vimrc tmux.conf gitconfig gitignore_global"
 
 # colorful output 
 COLOR_INFO=`tput setaf 3`
