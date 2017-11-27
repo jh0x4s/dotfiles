@@ -15,7 +15,6 @@ Plugin 'ctrlpvim/ctrlp.vim'             " 파일, 버퍼 탐색기 (일부의 �
 Plugin 'kshenoy/vim-signature'          " 북마크 확장 - 자동 알파벳팅, 순회, 등?
 Plugin 'mileszs/ack.vim'                " the_silver_search를 이용하여 (ack, grep 처럼) 파일내용 검색
 Plugin 'airblade/vim-gitgutter'         " git으로 관리되는 파일의 변동상태를 줄번호 화면 옆에 표시 
-Plugin 'nfvs/vim-perforce'              " 파일을 수정하거나 저장하면 자동으로 Perforce에 check out됨
 Plugin 'wellle/targets.vim'             " 다양한 text object 지정 방법
 Plugin 'tomtom/tcomment_vim'            " 주석(comment) 기능으로 사용하며, 파일타입에 따라 알맞은 주석방식을 자동으로 지원함 
 Plugin 'tpope/vim-surround'             " '', {}, [], <p></p>와 같은 구문들을 편리하게 입력, 수정 할 수 있음
@@ -49,7 +48,7 @@ filetype plugin on
 au BufRead,BufNewFile *.ts setlocal filetype=typescript
 
 "
-set background=dark                             " 하이라이팅 lihgt / dark
+set background=light                            " 하이라이팅 lihgt / dark
 set nocompatible                                " 오리지날 VI와 호환하지 않음
 set splitright                                  " 창 분할시 우측에 새창 배치
 set splitbelow                                  " 창 분할시 하단에 새창 배치
