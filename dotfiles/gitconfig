@@ -1,11 +1,8 @@
 [core]
-	excludesfile = ~/.gitignore_global
-[difftool "sourcetree"]
-	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
-	path = 
-[mergetool "sourcetree"]
-	cmd = /Applications/SourceTree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
-	trustExitCode = true
+    excludesfile = ~/.gitignore_global
+    editor = /usr/local/bin/vim
+
 [user]
-	name = jh0x4s
-	email = jh0x4s@gmail.com
+    name = Joonhwan
+    email = jh0x4s@gmail.com
+
