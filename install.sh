@@ -32,12 +32,22 @@ main() {
         ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
     fi
 
-    FORMULAS="git tig vim tmux jq peco pyenv pyenv-virtualenv"
+    FORMULAS="git tig vim tmux jq peco pyenv pyenv-virtualenv \
+        cask/alfred cask/dash \
+        cask/docker cask/iterm2 cask/postman cask/visual-studio-code cask/ngrok \
+        cask/google-backup-and-sync cask/flux cask/appcleaner cask/itsycal cask/iina cask/beamer" 
     for formula in ${FORMULAS}
     do
-        if ! brew ls --versions ${formula} > /dev/null; then
+        if [[ ${formula} == cask/* ]]; then
+            brew="brew cask"
+            formula=${formula/cask\//}
+        else
+            brew="brew"
+        fi
+
+        if ! ${brew} ls --versions ${formula} > /dev/null; then
             echo "${BLUE}Install ${formula}${NORMAL}"
-            brew install ${formula} 
+            ${brew} install ${formula} 
         fi
     done
 
