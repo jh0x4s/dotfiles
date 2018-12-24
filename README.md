@@ -1,8 +1,7 @@
 # dotfiles
 
+## Installation
+
 ```bash
-> git clone https://github.com/jh0x4s/dotfiles.git
-> cd ~/dotfiles
-> chmod +x setup.sh
-> ./setup.sh
+> sh -c "$(curl -fsSL https://raw.github.com/jh0x4s/dotfiles/master/install.sh)"
 ```
