@@ -29,7 +29,7 @@ main() {
 
     if [ ! $(which brew) ]; then
         echo "${BLUE}Install Homebrew${NORMAL}"
-        ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)" > /dev/null 2>&1 
+        ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
     fi
 
     FORMULAS="git tig vim tmux jq peco pyenv pyenv-virtualenv"
@@ -37,14 +37,14 @@ main() {
     do
         if ! brew ls --versions ${formula} > /dev/null; then
             echo "${BLUE}Install ${formula}${NORMAL}"
-            brew install ${formula} > /dev/null 2>&1 
+            brew install ${formula} 
         fi
     done
 
     DOTFILES_HOME=~/dotfiles
     if [ ! -d "${DOTFILES_HOME}" ]; then
         echo "${BLUE}Git clone dotfiles ${NORMAL}"
-        git clone https://github.com/jh0x4s/dotfiles.git ${DOTFILES_HOME} > /dev/null 2>&1 
+        git clone https://github.com/jh0x4s/dotfiles.git ${DOTFILES_HOME}
     fi
 
 }
