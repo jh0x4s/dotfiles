@@ -45,7 +45,7 @@ main() {
             brew="brew"
         fi
 
-        if ! ${brew} ls --versions ${formula} > /dev/null; then
+        if ! ${brew} ls --versions ${formula} &>/dev/null; then
             echo "${BLUE}Install ${formula}${NORMAL}"
             ${brew} install ${formula} 
         fi
