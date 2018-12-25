@@ -51,7 +51,7 @@ main() {
         fi
     done
 
-    if [ ! -d "~/.oh-my-zsh" ]; then
+    if [ ! -d ~/.oh-my-zsh ]; then
         echo "${BLUE}Install oh-my-zsh${NORMAL}" 
         sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
     fi
