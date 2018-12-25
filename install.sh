@@ -32,7 +32,7 @@ main() {
         ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
     fi
 
-    FORMULAS="git tig vim tmux jq peco pyenv pyenv-virtualenv \
+    FORMULAS="zsh git tig vim tmux jq peco pyenv pyenv-virtualenv \
         cask/alfred cask/dash \
         cask/docker cask/iterm2 cask/postman cask/visual-studio-code cask/ngrok \
         cask/google-backup-and-sync cask/flux cask/appcleaner cask/itsycal cask/iina cask/beamer" 
@@ -50,6 +50,11 @@ main() {
             ${brew} install ${formula} 
         fi
     done
+
+    if [ ! -d "~/.oh-my-zsh" ]; then
+        echo "${BLUE}Install oh-my-zsh${NORMAL}" 
+        sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+    fi
 
     DOTFILES_HOME=~/dotfiles
     if [ ! -d "${DOTFILES_HOME}" ]; then
