@@ -3,11 +3,11 @@
 " - Avoid using standard Vim directory names like 'plugin'
 call plug#begin('~/.vim/plugged')
 
+Plug 'itchyny/lightline.vim'          " 화면 상하단에 상태바(버퍼, 탭, 입력상태) 표시 (커스터마이징 가능)
 Plug 'jh0x4s/vim-numbers'             " 라인 번호를 상대, 절대, 표시안함 순서로 변경함 
 Plug 'scrooloose/nerdtree'            " 파일탐색기 (윈도우탐색기와 같은 화면과 북마크, 탭열기, 루트 디렉토리 변경하기 등의 기능) 
 Plug 'ctrlpvim/ctrlp.vim'             " 파일, 버퍼 탐색기 (일부의 문자만 입력하더라도 파일을 찾아주는 Full path fuzzy 검색 용도) 
 Plug 'kshenoy/vim-signature'          " 북마크 확장 - 자동 알파벳팅, 순회, 등?
-Plug 'vim-airline'                    " 화면 상하단에 상태바(버퍼, 탭, 입력상태) 표시 (커스터마이징 가능)
 Plug 'mileszs/ack.vim'                " the_silver_search를 이용하여 (ack, grep 처럼) 파일내용 검색
 Plug 'airblade/vim-gitgutter'         " git으로 관리되는 파일의 변동상태를 줄번호 화면 옆에 표시 
 Plug 'wellle/targets.vim'             " 다양한 text object 지정 방법
@@ -52,7 +52,8 @@ set ignorecase                                  " 검색시 대소문자 무시,
 set smartcase                                   " 검색어에 대문자 포함시 case sensitive 검색
 set incsearch                                   " 키워드 입력시 점진적 검색
 set cursorline                                  " 커서가 있는 줄 강조
-set laststatus=2                                " 상태줄이 항상 나옴 
+set showtabline=2                               " tab line 이 항상 나옴
+set laststatus=2                                " status line 이 항상 나옴 
 set title                                       " 편집하는 파일명을 창의 제목으로 사용
 set backspace=eol,start,indent                  " 줄의 끝, 시작, 들여쓰기에서 백스페이스시 이전줄로
 set history=1000                                " vi 편집기록 기억갯수 .viminfo에 기록
@@ -142,16 +143,27 @@ command! SoftTab8 set sts=8 sw=8 et
 " noremap <c-h> <c-d>
 " noremap <c-l> <c-u>
 
-" vim-airline 설정
-let g:airline#extensions#tabline#enabled=1      " 탭 사용시 상단에 탭목록 표시
-let g:airline#extensions#tabline#tab_nr_type=1  " 탭 번호를 표시
-let g:airline#extensions#tabline#fnamemod=':t'  " 탭 제목에 파일이름만 표시
-let g:airline#extensions#branch#enabled = 1
+let g:lightline = {
+      \ 'colorscheme': 'wombat',
+      \ 'active': {
+      \   'left': [ [ 'mode', 'paste' ],
+      \             [ 'gitbranch', 'readonly', 'filename', 'modified' ] ],
+      \   'right': [ [ 'lineinfo' ],
+      \              [ 'percent' ],
+      \              [ 'charvaluehex', 'fileencoding' ] ],
+      \ },
+      \ 'component': {
+      \   'charvaluehex': '0x%B',
+      \ },
+      \ 'component_function': {
+      \   'gitbranch': 'fugitive#head',
+      \ },
+      \ }
 
-if !exists('g:airline_symbols')
-  let g:airline_symbols = {}
-endif
-let g:airline_symbols.branch = '⎇'
+let g:lightline.tabline = {
+      \ 'left': [ ['tabs'] ],
+      \ 'right': [ ['close'] ]
+      \ }
 
 " ctrl-p 설정
 let g:ctrlp_map = '<c-p>'
