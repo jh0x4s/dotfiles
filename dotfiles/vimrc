@@ -33,7 +33,7 @@ set nocompatible                                " 오리지날 VI와 호환하�
 set splitright                                  " 창 분할시 우측에 새창 배치
 set splitbelow                                  " 창 분할시 하단에 새창 배치
 set nobackup                                    " 백업 파일을 안만듬
-set visualbell                                  " 키를 잘못눌렀을 때 화면 프레시
+set novisualbell                                " To turn off error flashing
 set ruler                                       " 화면 우측 하단에 현재 커서의 위치(줄,칸) 표시
 set number                                      " 행번호 표시(nu)
 set relativenumber                              " 행번호를 상대번호로 표시(rnu)
