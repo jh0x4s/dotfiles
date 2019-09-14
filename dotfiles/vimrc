@@ -1,50 +1,30 @@
-set nocompatible                        " be iMproved, required
-filetype off                            " required
+" Specify a directory for plugins
+" - For Neovim: ~/.local/share/nvim/plugged
+" - Avoid using standard Vim directory names like 'plugin'
+call plug#begin('~/.vim/plugged')
 
-" set the runtime path to include Vundle and initialize
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
+Plug 'jh0x4s/vim-numbers'             " 라인 번호를 상대, 절대, 표시안함 순서로 변경함 
+Plug 'scrooloose/nerdtree'            " 파일탐색기 (윈도우탐색기와 같은 화면과 북마크, 탭열기, 루트 디렉토리 변경하기 등의 기능) 
+Plug 'ctrlpvim/ctrlp.vim'             " 파일, 버퍼 탐색기 (일부의 문자만 입력하더라도 파일을 찾아주는 Full path fuzzy 검색 용도) 
+Plug 'kshenoy/vim-signature'          " 북마크 확장 - 자동 알파벳팅, 순회, 등?
+Plug 'vim-airline'                    " 화면 상하단에 상태바(버퍼, 탭, 입력상태) 표시 (커스터마이징 가능)
+Plug 'mileszs/ack.vim'                " the_silver_search를 이용하여 (ack, grep 처럼) 파일내용 검색
+Plug 'airblade/vim-gitgutter'         " git으로 관리되는 파일의 변동상태를 줄번호 화면 옆에 표시 
+Plug 'wellle/targets.vim'             " 다양한 text object 지정 방법
+Plug 'tomtom/tcomment_vim'            " 주석(comment) 기능으로 사용하며, 파일타입에 따라 알맞은 주석방식을 자동으로 지원함 
+Plug 'tpope/vim-surround'             " '', {}, [], <p></p>와 같은 구문들을 편리하게 입력, 수정 할 수 있음
+Plug 'easymotion/vim-easymotion'
+Plug 'terryma/vim-multiple-cursors'
+Plug 'leafgarland/typescript-vim'
+Plug 'scrooloose/syntastic'
 
-" let Vundle manage Vundle, required
-Plugin 'VundleVim/Vundle.vim'
-
-Plugin 'vim-airline'                    " 화면 상하단에 상태바(버퍼, 탭, 입력상태) 표시 (커스터마이징 가능)
-Plugin 'jh0x4s/vim-numbers'             " 라인 번호를 상대, 절대, 표시안함 순서로 변경함 
-Plugin 'scrooloose/nerdtree'            " 파일탐색기 (윈도우탐색기와 같은 화면과 북마크, 탭열기, 루트 디렉토리 변경하기 등의 기능) 
-Plugin 'ctrlpvim/ctrlp.vim'             " 파일, 버퍼 탐색기 (일부의 문자만 입력하더라도 파일을 찾아주는 Full path fuzzy 검색 용도) 
-Plugin 'kshenoy/vim-signature'          " 북마크 확장 - 자동 알파벳팅, 순회, 등?
-Plugin 'mileszs/ack.vim'                " the_silver_search를 이용하여 (ack, grep 처럼) 파일내용 검색
-Plugin 'airblade/vim-gitgutter'         " git으로 관리되는 파일의 변동상태를 줄번호 화면 옆에 표시 
-Plugin 'wellle/targets.vim'             " 다양한 text object 지정 방법
-Plugin 'tomtom/tcomment_vim'            " 주석(comment) 기능으로 사용하며, 파일타입에 따라 알맞은 주석방식을 자동으로 지원함 
-Plugin 'tpope/vim-surround'             " '', {}, [], <p></p>와 같은 구문들을 편리하게 입력, 수정 할 수 있음
-Plugin 'easymotion/vim-easymotion'
-Plugin 'terryma/vim-multiple-cursors'
-Plugin 'leafgarland/typescript-vim'
-Plugin 'scrooloose/syntastic'
-
-Plugin 'Valloric/YouCompleteMe'
-Plugin 'tpope/vim-fugitive'             " git 플러그인
-" Plugin 'jelera/vim-javascript-syntax'
-" Plugin 'marijnh/tern_for_vim'
-" Plugin 'hongqn/vim-osx-ime'
+Plug 'Valloric/YouCompleteMe'
+Plug 'tpope/vim-fugitive'             " git 플러그인
+" Plug 'jelera/vim-javascript-syntax'
+" Plug 'marijnh/tern_for_vim'
+" Plug 'hongqn/vim-osx-ime'
 " christoomey/vim-tmux-navigator
 
-" All of your Plugins must be added before the following line
-call vundle#end()                               " required
-filetype plugin indent on                       " required
-
-" Brief help
-" :PluginList       - lists configured plugins
-" :PluginInstall    - installs plugins; append `!` to update or just :PluginUpdate
-" :PluginSearch foo - searches for foo; append `!` to refresh local cache
-" :PluginClean      - confirms removal of unused plugins; append `!` to auto-approve removal
-"
-" see :h vundle for more details or wiki for FAQ
-" Put your non-Plugin stuff after this line
-
-"
-filetype plugin on
 au BufRead,BufNewFile *.ts setlocal filetype=typescript
 
 "
@@ -267,4 +247,7 @@ let g:ack_mappings = {
 map <leader>p m. 
 map <leader>[ '[
 map <leader>] ']
+
+" Initialize plugin system
+call plug#end()
 

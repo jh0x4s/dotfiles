@@ -30,16 +30,10 @@ function install {
 
     ln -snf $DOT_BIN_DIR/tm.sh /usr/local/bin/tm
 
-    # git submodule Vundle.vim, jellybeans.vim.
-    git submodule init
-    git submodule update
-
-    # init var/vim for ~/.vim 
-    mkdir -p $DOT_BASE_DIR/var/vim/bundle
-    ln -snf $DOT_LIB_DIR/Vundle.vim $DOT_VAR_DIR/vim/bundle/Vundle.vim 
-    ln -snf $DOT_VAR_DIR/vim ~/.vim
-
-    vim +PluginInstall +PluginUpdate +qall
+    # init vim 
+    ln -snf $DOT_BASE_DIR/vim ~/.vim
+    curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+    vim +PlugUpdate +qall
 }
 
 # remove
