@@ -51,7 +51,7 @@ set hlsearch                                    " 검색어 강조, set hls 도 
 set ignorecase                                  " 검색시 대소문자 무시, set ic 도 가능
 set smartcase                                   " 검색어에 대문자 포함시 case sensitive 검색
 set incsearch                                   " 키워드 입력시 점진적 검색
-set cursorline                                  " 커서가 있는 줄 강조
+set nocursorline                                " 커서가 있는 줄 강조하지 않음
 set showtabline=2                               " tab line 이 항상 나옴
 set laststatus=2                                " status line 이 항상 나옴 
 set title                                       " 편집하는 파일명을 창의 제목으로 사용
