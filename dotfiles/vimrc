@@ -81,7 +81,6 @@ set noimd imi=1 ims=-1                          " macvim에서 insert mode 종�
 
 syntax on                                       " 구문강조 사용
 filetype indent on                              " 파일 종류에 따른 구문강조
-colorscheme solarized                           " vi 색상 테마 설정
 
 " .vimrc 수정이 편리하게 단축키를 할당하고, 저장하면 재시작 필요없이 바로 적용되도록 한다
 " 파일 수정시에는 Git branch 이름이 표시되도록 절대경로 접근함

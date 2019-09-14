@@ -37,7 +37,6 @@ function install {
     # init var/vim for ~/.vim 
     mkdir -p $DOT_BASE_DIR/var/vim/bundle
     ln -snf $DOT_LIB_DIR/Vundle.vim $DOT_VAR_DIR/vim/bundle/Vundle.vim 
-    ln -snf $DOT_LIB_DIR/vim-colors-solarized/colors $DOT_VAR_DIR/vim/colors
     ln -snf $DOT_VAR_DIR/vim ~/.vim
 
     vim +PluginInstall +PluginUpdate +qall
