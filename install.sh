@@ -32,7 +32,7 @@ main() {
         ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
     fi
 
-    FORMULAS="zsh git tig vim tmux jq peco pyenv pyenv-virtualenv \
+    FORMULAS="zsh git tig vim tmux jq fzf pyenv pyenv-virtualenv \
         cask/alfred cask/dash \
         cask/docker cask/iterm2 cask/postman cask/visual-studio-code cask/ngrok \
         cask/google-backup-and-sync cask/flux cask/appcleaner cask/itsycal cask/iina cask/beamer" 
