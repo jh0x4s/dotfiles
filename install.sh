@@ -32,10 +32,12 @@ main() {
         ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
     fi
 
-    FORMULAS="zsh git vim tmux jq fzf pyenv pyenv-virtualenv \
-        cask/alfred cask/dash \
-        cask/docker cask/iterm2 cask/postman cask/ngrok \
-        cask/google-backup-and-sync cask/appcleaner cask/itsycal cask/iina cask/beamer" 
+    FORMULAS="zsh git vim jq fzf direnv 
+        nvm \
+        pyenv pyenv-virtualenv \
+        cask/docker cask/iterm2 cask/alfred cask/dash \
+        cask/visual-studio-code cask/sublime-merge cask/tableplus cask/postman \
+        cask/google-chrome cask/google-backup-and-sync cask/itsycal cask/appcleaner" 
     for formula in ${FORMULAS}
     do
         if [[ ${formula} == cask/* ]]; then
