@@ -9,9 +9,9 @@ main() {
         ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
     fi
 
-    FORMULAS="zsh git vim jq fzf direnv 
-        nvm \
-        pyenv pyenv-virtualenv \
+    FORMULAS="zsh zsh-autosuggestions git vim fzf jq direnv \
+        nvm pyenv pyenv-virtualenv \
+        tmux knqyf263/pet/pet terraform act \
         cask/docker cask/iterm2 cask/alfred cask/dash \
         cask/visual-studio-code cask/sublime-merge cask/tableplus cask/postman \
         cask/google-chrome cask/google-backup-and-sync cask/itsycal cask/appcleaner" 
