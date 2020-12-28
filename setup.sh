@@ -31,8 +31,7 @@ function install {
     ln -snf $DOT_BIN_DIR/tm.sh /usr/local/bin/tm
 
     # init vim 
-    ln -snf $DOT_BASE_DIR/vim ~/.vim
-    ln -snf $DOT_BASE_DIR/vim/vimrc ~/.vimrc
+    ln -snf $DOT_BASE_DIR/.vimrc ~/
     curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
     vim +PlugUpdate +qall
 }
@@ -48,7 +47,7 @@ function remove {
     rm /usr/local/bin/tm
 
     info "Deleteing ~/.vim"
-    rm ~/.vim
+    test -h ~/.vimrc && rm ~/.vimrc
 }
 
 # main
