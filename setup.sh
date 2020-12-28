@@ -5,7 +5,7 @@ DOT_BASE_DIR=~/dotfiles
 DOT_LIB_DIR=$DOT_BASE_DIR/lib
 DOT_VAR_DIR=$DOT_BASE_DIR/var
 DOT_BIN_DIR=$DOT_BASE_DIR/bin
-DOT_FILES="tmux.conf gitignore_global"
+DOT_FILES="tmux.conf"
 
 function install {
     # create symlink
@@ -16,8 +16,10 @@ function install {
 
     ln -snf $DOT_BIN_DIR/tm.sh /usr/local/bin/tm
 
-    # init vim 
+    ln -snf $DOT_BASE_DIR/.gitignore ~/
     ln -snf $DOT_BASE_DIR/.vimrc ~/
+
+    # init vim     
     curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
     vim +PlugUpdate +qall
 }
@@ -31,8 +33,8 @@ function remove {
     echo "Deleteing /usr/local/bin/tm"
     rm /usr/local/bin/tm
 
-    echo "Deleteing ~/.vim"
     test -h ~/.vimrc && rm ~/.vimrc
+    test -h ~/.gitignore && rm ~/.gitignore
 }
 
 # main
