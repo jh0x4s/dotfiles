@@ -18,14 +18,14 @@ main() {
     for formula in ${FORMULAS}
     do
         if [[ ${formula} == cask/* ]]; then
-            brew="brew cask"
+            brew="brew install --cask"
             formula=${formula/cask\//}
         else
-            brew="brew"
+            brew="brew install"
         fi
 
         if ! ${brew} ls --versions ${formula} &>/dev/null; then
-            ${brew} install ${formula} 
+            ${brew} ${formula} 
         fi
     done
 
