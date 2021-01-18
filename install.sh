@@ -9,12 +9,12 @@ main() {
         ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
     fi
 
-    FORMULAS="zsh zsh-autosuggestions git vim fzf jq direnv \
+    FORMULAS="zsh zsh-autosuggestions git tig vim fzf jq direnv \
         nvm pyenv pyenv-virtualenv \
         tmux knqyf263/pet/pet terraform act \
-        cask/docker cask/iterm2 cask/alfred cask/dash \
+        cask/docker cask/iterm2 cask/alfred cask/dash cask/lastpass lastpass-cli \
         cask/visual-studio-code cask/sublime-merge cask/tableplus cask/postman \
-        cask/google-chrome cask/google-backup-and-sync cask/itsycal cask/appcleaner" 
+        cask/google-chrome cask/itsycal cask/appcleaner" 
     for formula in ${FORMULAS}
     do
         if [[ ${formula} == cask/* ]]; then
